@@ -1,0 +1,95 @@
+""
+ERROR:CANNOT HAVE NULL TOKENIZER STRING
+____________________________________
+Input: "Hello World"
+Output:
+Tokenizer "Hello World"
+word "Hello"
+word "World"
+____________________________________
+Input: "Hello123"
+Output:
+Tokenizer "Hello123"
+word "Hello123"
+_____________________________________
+Input: " Hello "
+Output:
+Tokenizer " Hello "
+word "Hello"
+______________________________________
+Input: "123Hello"
+Output:
+Tokenizer "123Hello"
+integer "123"
+word "Hello"
+______________________________________
+Input: "Hel3.2e-10 {} 0777"
+Output:
+Tokenizer "He13.2e-10 {} 0777"
+word "He13"
+period "."
+malformed floating point number "2e-10"
+left brace "{"
+right brace "}"
+octal constant "0777"
+__________________________________________
+Input: "0xAFbcd"
+Output:
+Tokenizer "0xAFbcd"
+hex constant "0xAFbcd"
+_________________________________________
+Input: "98xAFBcd"
+Output:
+Tokenizer "98xAFBcd"
+malformed hex constant "98xAFBcd"
+__________________________________________
+Input: "0xAFbSDf3"
+Output:
+Tokenizer "0xAFbSDf3"
+hexconstant "0xAFb"
+word "SDf3"
+_________________________________________
+Input: "'LWFIEH''lsfj"
+Output:
+Tokenizer "LWFIEH''lsfj"
+word "LWFIEH"
+apostrophe "'"
+apostrophe "'"
+word "lsfj"
+___________________________________________
+Input: "H<<SDlij3.2e+10 90xe-10"
+Output:
+Tokenizer "H<<SDlij3.2e+10 90xe-10"
+word "H"
+left shift "<<"
+word "SDlij3"
+period "."
+malformed floating point number "2e+10"
+malformed floating point number "90xe-10"
+____________________________________________
+Input: "+3.2e-10"
+Output:
+Tokenizer "+3.2e-10"
+plus "+"
+floating point number "3.2e-10"
+____________________________________________
+Input: "3.2e-10+"
+Output:
+Tokenizer "3.2e-10+"
+malformed floating point number "3.2e-10+"
+____________________________________________
+Input "3.2.1.123"
+Output:
+Tokenizer "3.2.1.123"
+malformed decimal number "3.2.1.123"
+___________________________________________
+Input: "34."
+Output:
+Tokenizer "34."
+malformed floating point number "34."
+____________________________________________
+Input: "34e"
+Output:
+Tokenizer "34e"
+malformed floating point number "34e"
+_____________________________________________
